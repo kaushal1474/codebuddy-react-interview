@@ -3,7 +3,16 @@ import { Form } from 'react-bootstrap';
 import { useFormikContext } from 'formik';
 
 const Form1 = () => {
-  const { values, handleChange, errors } = useFormikContext();
+  // const { values, handleChange, errors } = useFormikContext();
+
+  const formik = useFormikContext();
+
+  if (!formik) {
+    // eslint-disable-next-line
+    throw 'Error loading form';
+  }
+
+  const { handleChange, errors, values } = formik;
 
   return (
     <Form className="form-container">
@@ -12,11 +21,12 @@ const Form1 = () => {
         <Form.Control
           name="form1.emailId"
           type="email"
-          value={values.form1.emailId}
+          data-testid="email"
+          value={values?.form1?.emailId}
           placeholder="Enter email"
           onChange={handleChange}
         />
-        {(errors?.form1?.emailId || !values.form1.isValid) && (
+        {(errors?.form1?.emailId || !values?.form1?.isValid) && (
           <div className="error">{errors?.form1?.emailId}</div>
         )}
       </Form.Group>
@@ -24,13 +34,14 @@ const Form1 = () => {
       <Form.Group className="mb-3">
         <Form.Label>Password</Form.Label>
         <Form.Control
+          data-testid="password"
           name="form1.password"
-          value={values.form1.password}
+          value={values?.form1?.password}
           type="password"
           placeholder="Password"
           onChange={handleChange}
         />
-        {(errors?.form1?.password || !values.form1.isValid) && (
+        {(errors?.form1?.password || !values?.form1?.isValid) && (
           <div className="error">{errors?.form1?.password}</div>
         )}
       </Form.Group>

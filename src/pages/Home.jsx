@@ -127,7 +127,7 @@ const Home = () => {
   return (
     <main>
       <div className="bg-light p-4 mb-5">
-        <h1>Multi-step form</h1>
+        <h1 data-testid="heading">Multi-step form</h1>
         <p>React template with Bootstrap version v4</p>
       </div>
       <Container>

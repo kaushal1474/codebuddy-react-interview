@@ -16,9 +16,12 @@ const Form2 = () => {
           placeholder="Enter your first name"
           onChange={handleChange}
           value={values?.form2?.firstName}
+          data-testid="firstname"
         />
-        {(errors?.form2?.firstName || !values.form2.isValid) && (
-          <div className="error">{errors?.form2?.firstName}</div>
+        {(errors?.form2?.firstName || !values?.form2?.isValid) && (
+          <div className="error" data-testid="firstname-error">
+            {errors?.form2?.firstName}
+          </div>
         )}
       </Form.Group>
       <Form.Group className="mb-3">
@@ -30,7 +33,7 @@ const Form2 = () => {
           value={values?.form2?.lastName}
           onChange={handleChange}
         />
-        {(errors?.form2?.lastName || !values.form2.isValid) && (
+        {(errors?.form2?.lastName || !values?.form2?.isValid) && (
           <div className="error">{errors?.form2?.lastName}</div>
         )}
       </Form.Group>
@@ -43,7 +46,7 @@ const Form2 = () => {
           value={values?.form2?.address}
           onChange={handleChange}
         />
-        {(errors?.form2?.address || !values.form2.isValid) && (
+        {(errors?.form2?.address || !values?.form2?.isValid) && (
           <div className="error">{errors?.form2?.address}</div>
         )}
       </Form.Group>
